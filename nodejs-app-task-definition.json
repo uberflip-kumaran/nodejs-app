@@ -1,5 +1,5 @@
 {
-  "taskDefinitionArn": "arn:aws:ecs:us-east-2:157940380306:task-definition/nodejs-app-task-definition:8",
+  "taskDefinitionArn": "arn:aws:ecs:us-east-2:157940380306:task-definition/nodejs-app-task-definition:10",
   "containerDefinitions": [
     {
       "name": "nodejs-app-container",
@@ -37,7 +37,7 @@
   "taskRoleArn": "arn:aws:iam::157940380306:role/ecsTaskExecutionRole",
   "executionRoleArn": "arn:aws:iam::157940380306:role/ecsTaskExecutionRole",
   "networkMode": "awsvpc",
-  "revision": 8,
+  "revision": 10,
   "volumes": [],
   "status": "ACTIVE",
   "requiresAttributes": [
@@ -78,7 +78,7 @@
     "cpuArchitecture": "X86_64",
     "operatingSystemFamily": "LINUX"
   },
-  "registeredAt": "2024-03-24T08:27:13.571Z",
+  "registeredAt": "2024-03-24T12:32:24.432Z",
   "registeredBy": "arn:aws:iam::157940380306:root",
   "tags": []
 }
