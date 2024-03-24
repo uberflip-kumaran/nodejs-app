@@ -93,33 +93,33 @@ app.get("/rest/getAllUsers", (req, res) => {
 });
 
 // //Middlewares
-// app.use(express.static(__dirname + "/public"));
-// app.set("views", path.join(__dirname, "views"));
-// app.set("view engine", "ejs");
-// const configuration = {
-//   clients: [
-//     {
-//       client_id: "oidcCLIENT",
-//       client_secret: "Some_super_secret",
-//       grant_types: ["authorization_code"],
-//       redirect_uris: [
-//         /* "http://localhost:8080/auth/login/callback",
-//         "https://oidcdebugger.com/debug", */
-//         "http://localhost:8055",
-//       ],
-//       response_types: ["code"],
+app.use(express.static(__dirname + "/public"));
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "ejs");
+const configuration = {
+  clients: [
+    {
+      client_id: "oidcCLIENT",
+      client_secret: "Some_super_secret",
+      grant_types: ["authorization_code"],
+      redirect_uris: [
+        /* "http://localhost:8080/auth/login/callback",
+        "https://oidcdebugger.com/debug", */
+        "http://localhost:8055",
+      ],
+      response_types: ["code"],
 
-//       //other configurations if needed
-//     },
-//   ],
-//   pkce: {
-//     required: () => false,
-//   },
-// };
+      //other configurations if needed
+    },
+  ],
+  pkce: {
+    required: () => false,
+  },
+};
 
-// const oidc = new Provider("http://localhost:3000", configuration);
+const oidc = new Provider(`http://localhost:${PORT}`, configuration);
 
-// app.use("/oidc", oidc.callback());
+app.use("/oidc", oidc.callback());
 
 app.get("/", (req, res) => {
   res.send("Hello, World!");
