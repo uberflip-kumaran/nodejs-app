@@ -2,6 +2,7 @@ import express from "express";
 import Provider from "oidc-provider";
 import path from "path";
 import { fileURLToPath } from "url";
+import dns from "dns";
 
 import userData from "./MOCK_DATA.json" assert { type: "json" };
 import graphql from "graphql";
@@ -180,12 +181,24 @@ const configuration = {
   },
 };
 
-const oidc = new Provider(`http://localhost:${PORT}`, configuration);
+// const oidc = new Provider(`http://localhost:${PORT}`, configuration);
 
-app.use("/oidc", oidc.callback());
+// app.use("/oidc", oidc.callback());
+
+// const serviceName = "nodejs-app-discovery-service.nodejs-app-namespace";
+const serviceIP = "";
+
+// dns.resolve4(serviceName, (err, addresses) => {
+//   if (err) {
+//     console.error("Error resolving DNS name:", err);
+//     return;
+//   }
+//   console.log(`Resolved IP addresses: ${JSON.stringify(addresses)}`);
+//   serviceIP = addresses[0];
+// });
 
 app.get("/", (req, res) => {
-  res.send("Hello, World!");
+  res.send(`Hello, World! ${serviceIP}`);
 });
 
 app.listen(PORT, () => {
