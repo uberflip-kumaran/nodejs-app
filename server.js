@@ -181,21 +181,12 @@ const configuration = {
   },
 };
 
-// const oidc = new Provider(`http://localhost:${PORT}`, configuration);
+const oidc = new Provider(
+  `http://nodejs-app-loadbalancer-561599528.us-east-2.elb.amazonaws.com:5000`,
+  configuration
+);
 
-// app.use("/oidc", oidc.callback());
-
-// const serviceName = "nodejs-app-discovery-service.nodejs-app-namespace";
-const serviceIP = "";
-
-// dns.resolve4(serviceName, (err, addresses) => {
-//   if (err) {
-//     console.error("Error resolving DNS name:", err);
-//     return;
-//   }
-//   console.log(`Resolved IP addresses: ${JSON.stringify(addresses)}`);
-//   serviceIP = addresses[0];
-// });
+app.use("/oidc", oidc.callback());
 
 app.get("/", (req, res) => {
   res.send(`Hello, World!`);
