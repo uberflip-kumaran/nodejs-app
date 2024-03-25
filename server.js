@@ -1,5 +1,5 @@
 import express from "express";
-// import Provider from "oidc-provider";
+import Provider from "oidc-provider";
 import path from "path";
 import { fileURLToPath } from "url";
 // import dns from "dns";
@@ -10,7 +10,7 @@ import { graphqlHTTP } from "express-graphql";
 
 const app = express();
 
-const PORT = 80;
+const PORT = 8080;
 
 const {
   GraphQLObjectType,

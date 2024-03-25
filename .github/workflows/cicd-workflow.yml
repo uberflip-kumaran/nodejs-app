@@ -2,8 +2,7 @@ name: CICD
 
 on:
   push:
-    branches: [main]
-    # branches: [deploy-to-ecs]
+    branches: [deploy-to-ecs]
 
 permissions:
   id-token: write
