@@ -1,7 +1,7 @@
 import express from "express";
-import Provider from "oidc-provider";
-import path from "path";
-import { fileURLToPath } from "url";
+// import Provider from "oidc-provider";
+// import path from "path";
+// import { fileURLToPath } from "url";
 
 import userData from "./MOCK_DATA.json" assert { type: "json" };
 import graphql from "graphql";
@@ -90,7 +90,7 @@ app.get("/rest/getAllUsers", (req, res) => {
   res.send(userData);
 });
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+// const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // //Middlewares
 // app.use(express.static(__dirname + "/public"));
