@@ -93,9 +93,9 @@ app.get("/rest/getAllUsers", (req, res) => {
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // //Middlewares
-app.use(express.static(__dirname + "/public"));
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "ejs");
+// app.use(express.static(__dirname + "/public"));
+// app.set("views", path.join(__dirname, "views"));
+// app.set("view engine", "ejs");
 // const configuration = {
 //   key: [
 //     {
