@@ -98,17 +98,19 @@ app.use(express.static(__dirname + "/public"));
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 const configuration = {
-  keys: [
-    {
-      alg: "RS256",
-      e: "AQAB",
-      key_ops: ["verify"],
-      kty: "RSA",
-      n: "0VJwEa4fiRDv4R6HMNEJZDR3_UAMGcrMhkR8aLhOLaOkV1sh84epY5xlpTmDiyCFf9bRDhSpnSB3QMOqzkBEZSlmd53P3hV-Wo-zRh48r1KzRdD6MDZU0oL-OyYgTP_VP1TZcT0oC5LG__p9Jex8SLpwzuHARpMuJyZ01wp5tUVkAbdGzf50-pQHoQNmXYoeojnG-alRMVH8gtuZ5oUn-h0GBSBspcAx5Jd_ifwX9uBkmYRjNFQQbslL69LZVcKvBwmPmeSxMI2TW0k8EJ-uR3Cw_5z1upG1vnKsKNpMuUsnwRduzncGaafz-MWDUIvVUYxMkRBjWRG0pPhDEb3E9w",
-      use: "sig",
-      kid: "c92834c9af14ade755dcefd90b5d7600",
-    },
-  ],
+  jwks: {
+    keys: [
+      {
+        alg: "RS256",
+        e: "AQAB",
+        key_ops: ["verify"],
+        kty: "RSA",
+        n: "0VJwEa4fiRDv4R6HMNEJZDR3_UAMGcrMhkR8aLhOLaOkV1sh84epY5xlpTmDiyCFf9bRDhSpnSB3QMOqzkBEZSlmd53P3hV-Wo-zRh48r1KzRdD6MDZU0oL-OyYgTP_VP1TZcT0oC5LG__p9Jex8SLpwzuHARpMuJyZ01wp5tUVkAbdGzf50-pQHoQNmXYoeojnG-alRMVH8gtuZ5oUn-h0GBSBspcAx5Jd_ifwX9uBkmYRjNFQQbslL69LZVcKvBwmPmeSxMI2TW0k8EJ-uR3Cw_5z1upG1vnKsKNpMuUsnwRduzncGaafz-MWDUIvVUYxMkRBjWRG0pPhDEb3E9w",
+        use: "sig",
+        kid: "c92834c9af14ade755dcefd90b5d7600",
+      },
+    ],
+  },
   clients: [
     {
       client_id: "oidcCLIENT",
