@@ -180,9 +180,9 @@ const configuration = {
   },
 };
 
-// const oidc = new Provider(`http://localhost:${PORT}`, configuration);
+const oidc = new Provider(`http://localhost:${PORT}`, configuration);
 
-// app.use("/oidc", oidc.callback());
+app.use("/oidc", oidc.callback());
 
 app.get("/", (req, res) => {
   res.send("Hello, World!");
