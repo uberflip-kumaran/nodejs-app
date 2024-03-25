@@ -1,8 +1,8 @@
 import express from "express";
-import Provider from "oidc-provider";
+// import Provider from "oidc-provider";
 import path from "path";
 import { fileURLToPath } from "url";
-import dns from "dns";
+// import dns from "dns";
 
 import userData from "./MOCK_DATA.json" assert { type: "json" };
 import graphql from "graphql";
@@ -198,7 +198,7 @@ const serviceIP = "";
 // });
 
 app.get("/", (req, res) => {
-  res.send(`Hello, World! ${serviceIP}`);
+  res.send(`Hello, World!`);
 });
 
 app.listen(PORT, () => {
