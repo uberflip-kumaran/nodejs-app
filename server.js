@@ -10,7 +10,7 @@ import { graphqlHTTP } from "express-graphql";
 
 const app = express();
 
-const PORT = 8080;
+const PORT = 5000;
 
 const {
   GraphQLObjectType,
