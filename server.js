@@ -124,7 +124,7 @@ const configuration = {
       redirect_uris: [
         /* "http://localhost:8080/auth/login/callback",
         "https://oidcdebugger.com/debug", */
-        "http://0.0.0.0:8055/admin/login?continue=",
+        "http://13.59.63.187:8055/admin/login?continue=",
       ],
       features: {
         introspection: { enabled: true },
