@@ -5,91 +5,10 @@ import { fileURLToPath } from "url";
 // import dns from "dns";
 
 import userData from "./MOCK_DATA.json" assert { type: "json" };
-import graphql from "graphql";
-import { graphqlHTTP } from "express-graphql";
 
 const app = express();
 
 const PORT = 5000;
-
-const {
-  GraphQLObjectType,
-  GraphQLSchema,
-  GraphQLList,
-  GraphQLID,
-  GraphQLInt,
-  GraphQLString,
-} = graphql;
-
-const UserType = new GraphQLObjectType({
-  name: "User",
-  fields: () => ({
-    id: { type: GraphQLInt },
-    firstName: { type: GraphQLString },
-    lastName: { type: GraphQLString },
-    email: { type: GraphQLString },
-    password: { type: GraphQLString },
-  }),
-});
-
-const RootQuery = new GraphQLObjectType({
-  name: "RootQueryType",
-  fields: {
-    getAllUsers: {
-      type: new GraphQLList(UserType),
-      args: { id: { type: GraphQLInt } },
-      resolve(parent, args) {
-        return userData;
-      },
-    },
-    findUserById: {
-      type: UserType,
-      description: "fetch single user",
-      args: { id: { type: GraphQLInt } },
-      resolve(parent, args) {
-        return userData.find((a) => a.id == args.id);
-      },
-    },
-  },
-});
-const Mutation = new GraphQLObjectType({
-  name: "Mutation",
-  fields: {
-    createUser: {
-      type: UserType,
-      args: {
-        firstName: { type: GraphQLString },
-        lastName: { type: GraphQLString },
-        email: { type: GraphQLString },
-        password: { type: GraphQLString },
-      },
-      resolve(parent, args) {
-        userData.push({
-          id: userData.length + 1,
-          firstName: args.firstName,
-          lastName: args.lastName,
-          email: args.email,
-          password: args.password,
-        });
-        return args;
-      },
-    },
-  },
-});
-
-const schema = new GraphQLSchema({ query: RootQuery, mutation: Mutation });
-
-app.use(
-  "/graphql",
-  graphqlHTTP({
-    schema,
-    graphiql: true,
-  })
-);
-
-app.get("/rest/getAllUsers", (req, res) => {
-  res.send(userData);
-});
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -122,9 +41,9 @@ const configuration = {
       client_secret: "Some_super_secret",
       grant_types: ["authorization_code"],
       redirect_uris: [
-        /* "http://localhost:8080/auth/login/callback",
-        "https://oidcdebugger.com/debug", */
-        "http://13.59.63.187:8055/auth/login/uberflip/callback",
+        /* "http://localhost:8080/auth/login/callback", */
+        "https://oidcdebugger.com/debug",
+        "http://ec2-52-15-195-192.us-east-2.compute.amazonaws.com:8055/admin/login",
       ],
       features: {
         introspection: { enabled: true },
@@ -188,10 +107,7 @@ const configuration = {
   },
 };
 
-const oidc = new Provider(
-  `http://nodejs-app-loadbalancer-561599528.us-east-2.elb.amazonaws.com:5000`,
-  configuration
-);
+const oidc = new Provider(`http://13.59.6.153:5000`, configuration);
 
 app.use("/oidc", oidc.callback());
 
