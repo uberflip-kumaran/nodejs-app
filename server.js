@@ -43,7 +43,7 @@ const configuration = {
       redirect_uris: [
         /* "http://localhost:8080/auth/login/callback", */
         "https://oidcdebugger.com/debug",
-        "http://ec2-52-15-195-192.us-east-2.compute.amazonaws.com:8055/admin/login",
+        "http://ec2-52-15-195-192.us-east-2.compute.amazonaws.com:8055/auth/login/uberflip/callback",
       ],
       features: {
         introspection: { enabled: true },
@@ -107,7 +107,10 @@ const configuration = {
   },
 };
 
-const oidc = new Provider(`http://13.59.6.153:5000`, configuration);
+const oidc = new Provider(
+  `http://nodejs-app-loadbalancer-561599528.us-east-2.elb.amazonaws.com:5000`,
+  configuration
+);
 
 app.use("/oidc", oidc.callback());
 
